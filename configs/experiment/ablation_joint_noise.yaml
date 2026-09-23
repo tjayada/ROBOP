@@ -1,0 +1,12 @@
+# @package _global_
+# Joint-noise perturbation sweep.
+# δ = 0.0 rides in the sweep as the paired baseline (exact no-op code path).
+# Grid is TOTAL joint-space L2 magnitude in degrees (per-joint RMS ~ δ/√n).
+# Requires --multirun, for example:
+#   python evaluation/run_eval_panda_orb.py --multirun +experiment=ablation_joint_noise \
+#       num_eval_frames=100 dataset.data_folder=??? checkpoint=???
+
+hydra:
+  sweeper:
+    params:
+      joint_noise.magnitude_deg: 0.0,0.1,0.25,0.5,1.0,2.0,5.0,10.0,15.0,20.0

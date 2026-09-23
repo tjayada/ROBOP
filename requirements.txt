@@ -1,0 +1,81 @@
+# Curated runtime dependencies for ROBOP.
+#
+# torch, torchvision, torchaudio  ->  installed via make setup (CUDA wheel URLs)
+# fvcore, iopath, pytorch3d       ->  installed via make install-pt3d
+# nemolib, robot-renderer,
+#   robop                    ->  installed via make install (editable)
+
+# ── Core scientific stack ─────────────────────────────────────────────────────
+numpy==1.26.4
+# scipy.randn was removed in 1.11.0; roboticstoolbox 1.0.3 still uses it.
+# Revert to 1.15.3 if upgrading to roboticstoolbox >= 1.1.x.
+scipy==1.10.1
+pillow==11.3.0
+h5py==3.16.0
+tqdm==4.67.3
+
+# ── Vision / NeMO deps ───────────────────────────────────────────────────────
+opencv-python==4.11.0.86
+einops==0.8.2
+kornia==0.6.3
+hydra-core==1.3.2
+omegaconf==2.3.0
+antlr4-python3-runtime==4.9.3
+
+# ── NeMO visualisation deps ───────────────────────────────────────────────────
+# nemolib is installed --no-deps so these must be listed here explicitly.
+plotly==6.5.2
+kaleido==1.2.0
+scikit-learn==1.6.1
+matplotlib==3.10.8
+contourpy==1.3.2
+cycler==0.12.1
+fonttools==4.62.0
+kiwisolver==1.5.0
+pyparsing==3.3.2
+python-dateutil==2.9.0.post0
+six==1.17.0
+
+# FoundPose deps
+faiss-cpu==1.14.3
+pyrender==0.1.45
+trimesh==4.12.2
+torchinfo==1.8.0
+
+# GigaPose deps (coarse estimator). Import-time deps of GigaPose's own code:
+# its networks subclass pytorch_lightning, src/utils/logging.py imports wandb.
+# bop_toolkit_lib (imported by src/utils/inout.py) and panda3d (template
+# rendering) are NOT on PyPI / need a special index, so they are installed via
+# `make install-gigapose`. imageio/pypng/ruamel.yaml are bop_toolkit_lib's
+# runtime deps (it is installed --no-deps to avoid heavy/conflicting extras).
+pytorch-lightning==2.6.5
+wandb==0.28.1
+ruamel.yaml==0.19.1
+imageio==2.37.4
+pypng==0.20220715.0
+open3d==0.19.0
+bokeh==3.9.2
+roma==1.5.7
+# pandas backs megapose's PandasTensorCollection, which the gigapose and
+# megapose_refiner adapters construct directly (and analysis/robopose_add reads).
+pandas==2.3.3
+webdataset==1.0.2
+joblib==1.5.3
+PyYAML==6.0.3
+
+# ── Robot / geometry stack ────────────────────────────────────────────────────
+# spatialmath-python, spatialgeometry, pgraph-python, swift-sim, rtb-data are
+# intentionally unpinned - their required versions differ across roboticstoolbox
+# releases (1.0.3 needs spatialmath~=1.0, 1.1.x needs ~=1.1). Let pip resolve.
+# 1.1.1 requires GLIBC_2.38 (fknm extension); use 1.0.3 on older OS.
+# Revert to 1.1.1 if your system has glibc >= 2.38.
+roboticstoolbox-python==1.0.3
+pyrr==0.10.3
+multipledispatch==1.0.0
+transforms3d==0.4.2
+
+# ── Utilities ─────────────────────────────────────────────────────────────────
+ansitable==0.11.5
+colored==2.3.1
+progress==1.6.1
+websockets==16.0

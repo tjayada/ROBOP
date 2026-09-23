@@ -1,0 +1,7 @@
+# Panda-ORB dataset - REAL images from DREAM (Lee et al., ICRA 2020): a Franka
+# Panda captured by a real camera on an orbiting trajectory (~32k frames), stored
+# in NDDS format. (DREAM's *synthetic* Panda sets are panda_synth_* - this is not
+# one of them.) Maps to evaluation/loaders/dream_loader.py DREAMDataset.
+
+name: "panda_orb"
+data_folder: ???        # set via CLI: dataset.data_folder=/path/to/panda-orb

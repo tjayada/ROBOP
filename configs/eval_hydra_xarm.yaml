@@ -1,0 +1,32 @@
+# Hydra ICP benchmark - UFACTORY xArm 7 evaluation.
+
+defaults:
+  - estimator: nemo
+  - robot: xarm7
+  - dataset: hydra_xarm
+  - override hydra/job_logging: default
+  - _self_
+
+checkpoint: ???
+seed: 0
+
+detections_path: null
+
+# Joint-noise perturbation (evaluation/joint_noise.py; sweep via +experiment=ablation_joint_noise).
+# magnitude_deg = total joint-space L2 in degrees; 0.0 = disabled (exact no-op).
+joint_noise:
+  magnitude_deg: 0.0
+  seed: 12345
+
+# null evaluates all frames. An integer samples evenly per measurement from
+# detection-covered frames when detections are supplied.
+num_eval_frames: null
+
+save_results: ${hydra:runtime.output_dir}/results.json
+
+hydra:
+  run:
+    dir: outputs/${now:%Y-%m-%d_%H-%M-%S}_${hydra:runtime.choices.estimator}_${hydra:runtime.choices.dataset}
+  sweep:
+    dir: multirun/${now:%Y-%m-%d_%H-%M-%S}_${hydra:runtime.choices.dataset}
+    subdir: ${hydra.job.num}

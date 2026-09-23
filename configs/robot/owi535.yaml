@@ -1,0 +1,7 @@
+# OWI-535 configuration (4-DOF toy arm, CRAVES benchmark).
+
+name: "owi535"
+
+# Native CRAVES-lab sensor resolution.
+image_height: 720
+image_width: 1280

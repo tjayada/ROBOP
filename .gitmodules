@@ -1,0 +1,12 @@
+[submodule "external/NeMO"]
+	path = external/NeMO
+	url = https://github.com/DLR-RM/NeMO.git
+[submodule "external/foundpose"]
+	path = external/foundpose
+	url = https://github.com/facebookresearch/foundpose.git
+[submodule "external/gigapose"]
+	path = external/gigapose
+	url = https://github.com/nv-nguyen/gigapose.git
+[submodule "external/robot-renderer"]
+	path = external/robot-renderer
+	url = https://github.com/tjayada/robot-renderer.git

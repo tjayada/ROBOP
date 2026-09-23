@@ -1,0 +1,9 @@
+RoboPose CRAVES comparison
+
+The published RoboPose result does not include the joint-ADD metrics used here.
+`robopose_pred_iter10.npz` contains the required iteration-10 predictions extracted
+from the original archive:
+https://www.paris.inria.fr/archive_ylabbeprojectsdata/robopose/results/craves-lab-unknownq--1804/dataset=craves.lab.real.test/
+
+Run `robopose-calc-add.py` in the ROBOP environment to score the bundled predictions
+with the same CRAVES joint-ADD implementation as the model evaluations.

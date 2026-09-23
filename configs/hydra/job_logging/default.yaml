@@ -1,0 +1,30 @@
+# @package hydra.job_logging
+# Shared logging config for all eval_*.yaml scripts.
+# Loaded via:  - override hydra/job_logging: default
+version: 1
+formatters:
+  simple:
+    format: "[%(asctime)s][%(name)s][%(levelname)s] - %(message)s"
+    datefmt: "%H:%M:%S"
+handlers:
+  console:
+    class: logging.StreamHandler
+    formatter: simple
+    stream: ext://sys.stdout
+  file:
+    class: logging.FileHandler
+    formatter: simple
+    filename: ${hydra:runtime.output_dir}/eval.log
+    mode: w
+root:
+  level: INFO
+  handlers: [console, file]
+# Per-module level overrides. Root stays at INFO so PyTorch/CUDA noise is suppressed.
+# To enable FoundPose debug output add estimator.verbose=true on the CLI, or override
+# this block directly: hydra.job_logging.loggers.robop.foundpose_estimator.level=DEBUG
+loggers:
+  robop.foundpose_estimator:
+    level: INFO
+    handlers: []
+    propagate: true
+disable_existing_loggers: false

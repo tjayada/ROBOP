@@ -1,0 +1,42 @@
+# GigaPose large-model defaults, coarse only. The published full method is
+# estimator=gigapose_megapose.
+
+type: gigapose
+
+# Templates use GigaPose's trained panda3d render distribution; robot-renderer
+# supplies geometry only.
+
+# Template viewsphere. GigaPose level-1 ~ 162 views; in-plane
+# is regressed by ist_net, so templates are NOT expanded with in-plane rotations.
+template_level: 1
+pose_distribution: all          # "all" (full sphere) or "upper" (upper hemisphere)
+
+# Robot-arm template framing
+# Upstream's fixed 0.4 m distance clips robot arms. The adapter derives a
+# per-state no-clip distance and rejects invalid renders.
+template_fit_margin: 0.05
+min_template_pixels: 100
+
+# Matching (configs/model/large.yaml: testing_metric / LocalSimilarity).
+# k=5 and the 0.5 similarity floor are the paper's (Sec. 3.2).
+k: 5
+sim_threshold: 0.5
+patch_threshold: 3
+
+# 2D-affine RANSAC (ObjectPoseRecovery default). 14 px = one patch, the paper's
+# error threshold delta (Sec. 3.3).
+ransac_pixel_threshold: 14
+
+# Refiner: this config is coarse-only.
+# These backbone configs must match gigaPose_v1.ckpt.
+ae_config: dinov2_l
+ist_config: resnet
+
+cache_dir: null
+
+debug_save_templates: null
+
+debug_reproject_dir: null
+n_reproject_frames: 20
+
+verbose: false

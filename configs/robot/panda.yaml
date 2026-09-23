@@ -1,0 +1,8 @@
+# ADD uses FK indices [0,2,3,4,6,7,8], matching the DREAM/BOP Panda keypoints.
+
+name: "panda"
+eval_keypoint_indices: [0, 2, 3, 4, 6, 7, 8]
+
+# Native sensor resolution - used to scale camera intrinsics for the renderer.
+image_height: 480
+image_width: 640

@@ -1,0 +1,30 @@
+# MegaPose refinement of poses from an existing results JSON. Failed coarse
+# poses remain failures; successful frames are paired by image path and joints.
+
+type: megapose_refiner
+
+init_results_path: ""
+
+model_name: megapose-1.0-RGB-multi-hypothesis
+
+megapose_models_root: ""
+
+# null uses the model's published iteration count.
+n_refiner_iterations: null
+
+# Frame-pairing sanity check: joints_rad from the init JSON must match the
+# incoming joint angles within this tolerance (radians).
+joints_atol: 1.0e-5
+
+# Score the refined pose with MegaPose's coarse net (diagnostic pose_logit in
+# the per-frame diagnostics; does not change the pose with one hypothesis).
+score_refined: false
+
+num_workers: 4
+batch_size_objects: 8
+batch_size_images: 128   # load_named_model default
+
+debug_reproject_dir: null
+n_reproject_frames: 20
+
+verbose: false

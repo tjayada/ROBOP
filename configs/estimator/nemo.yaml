@@ -1,0 +1,61 @@
+# Robot-agnostic NeMO defaults.
+
+type: nemo
+
+conf_threshold: 0.1
+mask_threshold: 0.5
+# The published pipeline builds the representation from template views only and
+# decodes the query against it. Adding the query to the template set makes the
+# representation query-dependent; true enables that variant.
+include_query_in_templates: false
+use_mesh_surface_sampling: true
+use_blurred_query_background: false
+blur_sigma: 2.0
+
+debug_save_decoder: null
+
+# bbox is the published external-detection regime. center and bootstrap are
+# detector-free variants; bootstrap follows Finding NeMO supplement 7.5.
+crop_mode: "bbox"
+
+# Relative bbox padding before squarification.
+bbox_crop_pad: 0.0
+
+# How the learned NeMO frame is aligned to the metric CAD frame:
+#   "extent" - align center and known metric extent.
+#   "bundle" - the paper's similarity alignment (supplement section 7.4,
+#              algorithm 1); requires fill_frame=false.
+alignment_method: "extent"
+alignment_k_best: 5
+alignment_max_iter: 10000
+alignment_lr: 0.05
+alignment_huber_delta: 0.001
+# The published optimizer keeps the rotation axis fixed at its initialization
+# and fits only the angle about it. true frees the axis, which optimizes more
+# than the published method does.
+alignment_differentiable_axis: false
+
+nemo_encoding_size: 224
+num_sample_points: 1500
+
+# Published PnP protocol: 256 correspondences, 30% inliers, 500 iterations,
+# and 6 px reprojection error (Finding NeMO supplement 7.5).
+pnp_min_correspondences: 256
+pnp_min_inlier_ratio: 0.3
+pnp_initial_iterations: 500
+pnp_initial_reproj_error: 6.0
+pnp_initial_confidence: 0.99999
+
+# Factor 3.0 is the shared no-clip bound for robot-renderer templates.
+render_size: 448
+viewset: "fibonacci_256"
+num_views: 32
+sphere_distance_factor: 3.0
+elevation_range: [-90.0, 90.0]
+anchor_elevation_range: [-5.0, 5.0]
+orientation: "simple_upright"
+diverse_selection: true
+# Match bbox query framing; set false for bundle alignment.
+fill_frame: true
+fill_frame_pad: 0.15
+fill_frame_min_px: 64

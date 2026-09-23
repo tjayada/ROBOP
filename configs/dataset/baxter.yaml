@@ -1,0 +1,12 @@
+# CtRNet Baxter real-world dataset.
+# Expected layout:
+#   <data_folder>/pose_0/ ... pose_19/   - PNG images
+#   <data_folder>/ground_truth_data      - pickle with joints, ee_2d, ee_3d per pose
+
+name: "baxter_real"
+data_folder: ???   # set via CLI: dataset.data_folder=/path/to/baxter-real-dataset
+
+# Image scale applied at load time. 1.0 = native 2048×1536 so bbox crops keep full
+# detail (CtRNet's 0.3125 -> 640×480 is NOT needed for metric parity - metrics live in
+# 3D/2D GT space, not input space).
+scale: 1.0

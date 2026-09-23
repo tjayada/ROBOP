@@ -1,0 +1,25 @@
+[build-system]
+requires = ["setuptools>=61.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "robop"
+version = "0.1.0"
+description = "Training-free robot arm pose estimation from a single RGB image using BOP pose estimation models"
+readme = "README.md"
+license = { text = "MIT" }
+requires-python = ">=3.10"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+
+[tool.ruff]
+line-length = 120
+extend-exclude = ["external", "*.ipynb"]
+
+[tool.ruff.lint]
+select = ["F", "E", "W", "B"]
+ignore = ["B905"]

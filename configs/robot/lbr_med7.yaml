@@ -1,0 +1,8 @@
+# KUKA LBR Med 7 R800 - Hydra ICP benchmark.
+# Matches robot-renderer registry name "lbr_med7".
+
+name: "lbr_med7"
+
+# RealSense D435 resolution used in the Hydra dataset.
+image_height: 720
+image_width: 1280

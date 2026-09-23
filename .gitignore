@@ -1,0 +1,52 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+dist/
+build/
+.eggs/
+.pytest_cache/
+.ruff_cache/
+
+# Run logs
+*.log
+
+# Hydra outputs
+outputs/
+multirun/
+.hydra/
+
+# Data / results (large, not version-controlled)
+data/
+checkpoints/
+detections/
+results/
+debug_*/
+
+# Analysis figure / plot output
+figures/
+figs/
+plots/
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Env
+.env
+.venv/
+
+# Machine-specific launcher copies (see robot-detector's run_all_detections.local.sh convention)
+*.local.sh
+
+# macOS
+.DS_Store
+
+# git submodules
+#external/
+
+# FoundPose-specific
+foundpose_cache/
+# Generated numpy data (e.g. analysis/joint_reuse/dump_panda_joint_log.py output)
+*.npy
+# SLURM output logs
+*.out

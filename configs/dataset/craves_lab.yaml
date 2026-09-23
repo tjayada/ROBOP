@@ -1,0 +1,13 @@
+# CRAVES lab-test-real dataset (428 real photos of an OWI-535 with
+# puppeteer-aligned GT: joint angles, 3D keypoints, intrinsics + extrinsics,
+# seg masks).
+# Data must be downloaded from ModelScope (`qiuwch/craves`, split `lab`) and
+# point `data_folder` at the unpacked `test_20181024/` directory.
+
+name: "craves_lab"
+data_folder: ???   # set via CLI: dataset.data_folder=/path/to/test_20181024
+
+# Image resize factor applied at load time.  K is scaled to match; kp2d_gt and
+# bbox stay in native 1280×720 pixels (see craves_loader module docstring).
+# 1.0 = native, so detection-bbox crops keep full detail before the 224 resize.
+scale: 1.0

@@ -1,0 +1,14 @@
+# Published GigaPose+MegaPose method: GigaPose coarse retrieval followed by the
+# MegaPose RGB render-and-compare refiner.
+
+defaults:
+  - gigapose
+
+refine: true
+# Published multi-hypothesis setting: refine all coarse top-k poses and keep the
+# highest MegaPose score.
+refiner_multi_hypothesis: true
+refiner_model_name: megapose-1.0-RGB-multi-hypothesis
+n_refiner_iterations: 5
+megapose_models_root: ""        # e.g. external/gigapose/pretrained/megapose-models
+refiner_num_workers: 4

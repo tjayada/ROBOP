@@ -1,0 +1,8 @@
+# Hydra ICP benchmark - Mecademic Meca500-R4.
+# data_folder should point to hydra_eval/meca/ (contains measurement_0-2/).
+
+name: "hydra_meca"
+data_folder: ???
+
+# 1.0 = native 1280×720, so detection-bbox crops keep full detail.
+scale: 1.0

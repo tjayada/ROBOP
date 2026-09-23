@@ -1,0 +1,8 @@
+# UFACTORY xArm 7 - Hydra ICP benchmark.
+# Matches robot-renderer registry name "xarm7".
+
+name: "xarm7"
+
+# RealSense D435 resolution used in the Hydra dataset.
+image_height: 720
+image_width: 1280

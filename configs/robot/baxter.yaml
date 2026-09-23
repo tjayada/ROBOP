@@ -1,0 +1,8 @@
+# Baxter left-arm configuration.
+# Camera intrinsics are hardcoded in baxter_loader.py (not read from a settings file).
+
+name: "baxter_left_arm"
+
+# Native sensor resolution (Azure Kinect, as used in CtRNet Baxter dataset).
+image_height: 1536
+image_width: 2048

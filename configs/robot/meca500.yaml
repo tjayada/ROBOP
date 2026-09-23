@@ -1,0 +1,8 @@
+# Mecademic Meca500-R4 - Hydra ICP benchmark.
+# Matches robot-renderer registry name "meca500".
+
+name: "meca500"
+
+# RealSense D435 resolution used in the Hydra dataset.
+image_height: 720
+image_width: 1280

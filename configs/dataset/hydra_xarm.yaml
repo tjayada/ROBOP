@@ -1,0 +1,8 @@
+# Hydra ICP benchmark - UFACTORY xArm 7.
+# data_folder should point to hydra_eval/xarm/ (contains measurement_0-2/).
+
+name: "hydra_xarm"
+data_folder: ???
+
+# 1.0 = native 1280×720, so detection-bbox crops keep full detail.
+scale: 1.0

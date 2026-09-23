@@ -1,0 +1,9 @@
+# Hydra ICP benchmark - KUKA LBR Med 7.
+# data_folder should point to hydra_eval/lbr/ (contains measurement_0-2/).
+
+name: "hydra_lbr"
+data_folder: ???
+
+# Image resize factor applied at load time; K is scaled to match.
+# 1.0 = native 1280×720, so detection-bbox crops keep full detail.
+scale: 1.0

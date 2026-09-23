@@ -1,0 +1,42 @@
+# FoundPose defaults. The backbone follows the paper; other method settings
+# follow the released LMO configuration unless noted.
+
+type: foundpose
+# Paper: DINOv2 ViT-L/14 with registers, layer 18. The released LMO config uses ViT-S.
+dino_model: "dinov2_vitl14_reg"
+dino_layer: 18
+
+# Released template sampling: 57 views x 14 rotations at 420 px.
+render_size: 420
+num_views: 57
+num_inplane_rotations: 14
+grid_cell_size: 14.0
+
+apply_pca: true
+pca_components: 256
+cluster_num: 2048
+
+match_top_n_templates: 5
+match_top_k_buddies: 300
+
+# PnP values follow infer/lmo.json and infer.py.
+pnp_ransac_iter: 400
+pnp_reproj_error: 10.0
+pnp_confidence: 0.99
+pnp_refine_lm: true
+min_correspondences: 6
+
+# Unlike upstream's fixed dataset radius, null derives a no-clip radius per joint state.
+sphere_distance_mm: null
+# Ours: the released LMO config ships 4; 2 halves the template render cost with no significant ADD change.
+ssaa_factor: 2.0
+template_fit_margin: 0.05
+min_template_pixels: 100
+
+# Applied through upstream construct_crop_camera; 0.2 approximates paper delta=0.6.
+crop_rel_pad: 0.2
+
+# Optional representation cache; its key includes the template camera intrinsics.
+cache_dir: null
+debug_dir: null
+verbose: false

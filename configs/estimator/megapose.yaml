@@ -1,0 +1,25 @@
+# Standalone MegaPose coarse+refiner method (Labbé et al., CoRL 2022). The posed
+# robot changes per frame, so the full 576-rotation coarse grid is rebuilt.
+
+type: megapose
+
+# Headline BOP model from MegaPose's NAMED_MODELS.
+model_name: megapose-1.0-RGB-multi-hypothesis
+
+megapose_models_root: ""        # e.g. external/gigapose/pretrained/megapose-models
+
+# Inference parameters. null => use the model's published inference_parameters
+# (multi-hypothesis: n_pose_hypotheses=5, n_refiner_iterations=5).
+n_refiner_iterations: null
+n_pose_hypotheses: null
+
+num_workers: 4
+batch_size_objects: 8
+batch_size_images: 128   # load_named_model default
+
+debug_reproject_dir: null
+n_reproject_frames: 20
+
+debug_render_dir: null
+
+verbose: false

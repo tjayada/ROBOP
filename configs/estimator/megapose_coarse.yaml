@@ -1,0 +1,6 @@
+# MegaPose's SO(3)-grid coarse stage without refinement.
+
+defaults:
+  - megapose
+
+coarse_only: true

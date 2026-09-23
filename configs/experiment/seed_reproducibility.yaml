@@ -1,0 +1,11 @@
+# @package _global_
+# Seed reproducibility sweep with all non-seed parameters fixed.
+# Requires --multirun, for example:
+#   python evaluation/run_eval_panda_orb.py --multirun \
+#       +experiment=seed_reproducibility \
+#       dataset.data_folder=??? checkpoint=???
+
+hydra:
+  sweeper:
+    params:
+      seed: 0,1,2,3,4
